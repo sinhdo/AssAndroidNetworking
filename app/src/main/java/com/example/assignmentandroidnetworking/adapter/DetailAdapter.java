@@ -48,6 +48,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.FoodViewHo
     public DetailAdapter(List<Foods> list, Context mContext) {
         this.list = list;
         this.mContext = mContext;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -132,7 +133,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.FoodViewHo
             @Override
             public void onResponse(Call<SvrDeleteFood> call, Response<SvrDeleteFood> response) {
                 SvrDeleteFood deleteFood = response.body();
-                Log.d("==================TAG", "onResponse: "+deleteFood.getMessage());
+                Toast.makeText(mContext.getApplicationContext(), "Xoá thành công food "+foods.getNameFoods(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
